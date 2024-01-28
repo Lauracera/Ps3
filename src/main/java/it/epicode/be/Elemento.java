@@ -2,6 +2,7 @@ package it.epicode.be;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import java.util.Objects;
 
 @Entity
 public class Elemento {
@@ -51,6 +52,18 @@ public class Elemento {
 
     public void setNumPagine(int numPagine) {
         this.numPagine = numPagine;
+    }
+
+    public int hashCode() {
+        return Objects.hash(isbn);
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj == null || getClass() != obj.getClass()) return false;
+        Elemento elemento = (Elemento) obj;
+        return Objects.equals(isbn, elemento.isbn);
     }
 
 }
